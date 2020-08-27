@@ -7,27 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0"
+      prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controller">
     <children>
         <TabPane layoutY="2.0" prefHeight="275.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab text="Production Line">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                          <Label fx:id="lblOutput" layoutX="73.0" layoutY="131.0" prefHeight="17.0" prefWidth="118.0" />
-                          <Button layoutX="99.0" layoutY="98.0" mnemonicParsing="false" onAction="#sayHello" text="Say Something" />
-                     </children></AnchorPane>
+                            <children>
+                                <Label fx:id="lblOutput" layoutX="73.0" layoutY="131.0" prefHeight="17.0"
+                                       prefWidth="118.0"/>
+                                <Button layoutX="99.0" layoutY="98.0" mnemonicParsing="false" onAction="#sayHello"
+                                        text="Say Something"/>
+                            </children>
+                        </AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="Produce">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
                     </content>
                 </Tab>
                 <Tab text="Production Log">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
                     </content>
                 </Tab>
             </tabs>
