@@ -1,13 +1,31 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class Controller {
 
     @FXML
-    private Label lblOutput;
+    private TextField productName;
 
-    public void sayHello() {
-        lblOutput.setText("Prestidigitation :D");
+    @FXML
+    private TextField manufactureName;
+
+    @FXML
+    private Button btnProduct;
+
+    @FXML
+    private Button btnRecord;
+
+    @FXML
+    void addProduct(ActionEvent event) {
+        System.out.println("Some Product");
+
+    }
+
+    @FXML
+    void recordProduction(ActionEvent event) {
+        System.out.println("something Recorded");
 
     }
 
