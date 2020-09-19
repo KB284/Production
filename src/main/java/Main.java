@@ -16,7 +16,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(root, 600, 600);
 
-        primaryStage.setTitle("FXML Welcome");
+        primaryStage.setTitle("Production");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
