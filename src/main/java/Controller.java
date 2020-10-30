@@ -50,7 +50,7 @@ public class Controller {
   private Button btnRecord;
 
   @FXML
-  void showDetail(ActionEvent event) {
+  public void showDetail(ActionEvent event) {
     connectToDatabase();
   }
 
@@ -78,7 +78,7 @@ public class Controller {
   }
 
 
-  private void connectToDatabase() {
+  public void connectToDatabase() {
 
     final String JDBC_DRIVER = "org.h2.Driver";
     final String DB_URL = "jdbc:h2:./res/HR";
@@ -132,6 +132,5 @@ public class Controller {
     }
   }
 }
-
 
 
