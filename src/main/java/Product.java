@@ -60,7 +60,7 @@ public abstract class Product implements Item {
   public abstract void setType(String type);
 }
 
-class Widget extends Product implements Item{
+class Widget extends Product implements Item {
 
   Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);

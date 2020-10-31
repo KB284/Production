@@ -170,7 +170,7 @@ public class Controller {
     chooseProduct.setItems(observableProductStrings);
   }
 
-  public static ObservableList<Product>populateList(){
+  public static ObservableList<Product> populateList() {
     return FXCollections.observableArrayList();
   }
 
