@@ -14,7 +14,7 @@ public class ProductionRecord {
     productionNumber = 0;
     serialNumber = "0";
     dateProduced = new Date();
-    // dateFormat.format(dateProduced);
+     dateFormat.format(dateProduced);
   }
 
   public ProductionRecord(

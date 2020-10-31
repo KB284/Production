@@ -7,47 +7,64 @@
  ****************************************************************************************************************/
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
-import javax.swing.text.AbstractDocument;
-import java.sql.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Controller {
 
   @FXML
   private TextField productName;
-
   @FXML
-  private TextField manufactureName;
-
+  private TextField Manufacturer;
   @FXML
   private ChoiceBox<String> comboItemType;
-
   @FXML
-  private ComboBox<String> comboRecordProduction;
-
+  private Button btnAddProduct;
   @FXML
-  private TableView<AbstractDocument.Content> tableProduct;
-
+  private TableView<Product> existingProdTable;
   @FXML
-  private TableColumn<AbstractDocument.Content, String> nameTableColumn;
-
+  private TableColumn<?, ?> nameTableColumn;
   @FXML
-  private TableColumn<AbstractDocument.Content, String> manufactureTableColumn;
-
+  private TableColumn<?, ?> manufactureTableColumn;
   @FXML
-  private TableColumn<AbstractDocument.Content, String> itemTypeTableColumn;
-
+  private TableColumn<?, ?> itemTypeTableColumn;
   @FXML
   private Label lblProductInfo;
-
   @FXML
-  private Button btnProduct;
-
+  private ListView<String> chooseProduct;
+  @FXML
+  private ComboBox<String> comboRecordProduction;
   @FXML
   private Button btnRecord;
+  @FXML
+  private TextArea productionLog;
+
+  private Connection conn;
+
+  public static ObservableList<Product> productLine = FXCollections.observableArrayList();
+
+  private final ObservableList<Product> observableProductLine = FXCollections.observableArrayList();
+
+  private final ObservableList<String> observableProductStrings =
+      FXCollections.observableArrayList();
 
   @FXML
   public void showDetail(ActionEvent event) {
@@ -56,27 +73,106 @@ public class Controller {
 
   @FXML
   void addProduct(ActionEvent event) {
-    System.out.println("Galaxy S20");
-
+    connectToDatabase();
   }
 
   @FXML
   void recordProduction(ActionEvent event) {
-    System.out.println("Another Galaxy S20");
-
+    connectToDatabase();
   }
+
 
   public void initialize() {
 
-    for (int count = 1; count <= 10; count++) {
-      comboRecordProduction.getItems().add(String.valueOf(count));
+    connectToDatabase();
+
+    loadProductLine();
+
+    setupProductLineTable();
+
+    for (int i = 1; i < 11; i++) {
+      String number = "" + i;
+      comboRecordProduction.getItems().add(number);
     }
-    for (int count = 1; count <= 10; count++) {
-      comboItemType.getItems().add(String.valueOf(count));
+    for (ItemType IT : ItemType.values()) {
+      comboItemType.getItems().add(String.valueOf(IT));
     }
 
   }
+//============================================================================================================
 
+  private void loadProductLine() {
+    try {
+      // Setting lastId to zero
+      int lastId = 0;
+
+      Statement stmt = conn.createStatement();
+
+      // Executing query and collecting results
+      ResultSet rs = stmt.executeQuery("SELECT * FROM PRODUCT");
+
+      // Looping through results
+      while (rs.next()) {
+        // Incrementing lastId
+        lastId++;
+        // Storing data into variables
+        int id = rs.getInt(1);
+        String name = rs.getString(2);
+        String type = rs.getString(3);
+        String manufacturer = rs.getString(4);
+        // Getting the proper item type from the code
+        ItemType item;
+        switch (type) {
+          case "AM":
+            item = ItemType.AUDIOMOBILE;
+            break;
+          case "AU":
+            item = ItemType.AUDIO;
+            break;
+          case "VI":
+            item = ItemType.VISUAL;
+            break;
+          case "VM":
+            item = ItemType.VISUAL_MOBILE;
+            break;
+          default:
+            item = null;
+        }
+        // Creating product objects from the database information
+        Widget product = new Widget(name, manufacturer, item);
+        // Adding those objects to the array list and observableLists
+        productLine.add(product);
+        observableProductLine.add(product);
+        observableProductStrings.add(product.toString());
+      }
+      // Closing statement
+      stmt.close();
+    } catch (NullPointerException npe) {
+      System.out.println("Null Pointer");
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+//==========================================================================================================
+
+  private void setupProductLineTable() {
+    ObservableList<Product> data = populateList();
+    nameTableColumn.setCellValueFactory(new PropertyValueFactory("Name"));
+    manufactureTableColumn.setCellValueFactory(new PropertyValueFactory("Manufacturer"));
+    itemTypeTableColumn.setCellValueFactory(new PropertyValueFactory("Type"));
+    existingProdTable.setItems(data);
+
+    // Adding items to the existingProducts table view
+    existingProdTable.setItems(observableProductLine);
+
+    // Adding that array list to the choose product list view
+    chooseProduct.setItems(observableProductStrings);
+  }
+
+  public static ObservableList<Product>populateList(){
+    return FXCollections.observableArrayList();
+  }
 
   public void connectToDatabase() {
 
@@ -99,33 +195,33 @@ public class Controller {
       //STEP 3: Execute a query
       stmt = conn.createStatement();
 
-      String nameOfProduct = productName.getText();
-      String nameOfManufacturer = manufactureName.getText();
+      String insertSql = "INSERT INTO Product(name, manufacturer, type) "
+          + "VALUES ( ?, ?, ? )";
 
-      String insertSql = "INSERT INTO Product(type, manufacturer, name) "
-          + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
+      PreparedStatement preparedStatement = conn.prepareStatement(insertSql);
+      preparedStatement.setString(1, productName.getText());
+      preparedStatement.setString(2, Manufacturer.getText());
+      preparedStatement.setString(3, ItemType.AUDIO.label);
 
-      stmt.executeUpdate(insertSql);
+      preparedStatement.executeUpdate();
 
-      String sql = "SELECT type, maufacturer, name "
-          + "FROM PRODUCT where name=" + nameOfProduct
-          + "type=" + nameOfManufacturer;
+      String sql = "select * FROM Product";
 
       ResultSet rs = stmt.executeQuery(sql);
+      while (rs.next()) {
 
-      rs.next();
-      String empName = rs.getString(1);
-      String empManufacturer = rs.getString(2);
-      String empItemType = rs.getString(3);
-      //System.out.println(empName+ " " + empManufacturer + " " + empItemType);
-
-      lblProductInfo.setText(empName + " " + empManufacturer + " " + empItemType);
+        System.out.println(rs.getString(1));
+        System.out.println(rs.getString(2));
+        System.out.println(rs.getString(3));
+        System.out.println(rs.getString(4));
+      }
 
       // STEP 4: Clean-up environment
       stmt.close();
       conn.close();
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
+      System.out.println();
 
     } catch (SQLException e) {
       e.printStackTrace();
