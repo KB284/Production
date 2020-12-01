@@ -69,3 +69,8 @@ In addition to the ability to record production, the software also needs the abi
         -   Professor
 -   **Timelines** (a breakdown of the Product Backlog into time-bound smaller, more detailed tasks in Sprint Backlogs)
     -   Three 5-week sprints, detailed below.
+
+## How it works
+![Production Line Tab](Prodline.gif)
+![Produce Tab](Prod.gif)
+![Employee tab](Employee.gif)
