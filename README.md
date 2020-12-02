@@ -72,5 +72,3 @@ In addition to the ability to record production, the software also needs the abi
 
 ## How it works
 ![Production Line Tab](Prodline.gif)
-![Produce Tab](Prod.gif)
-![Employee tab](Employee.gif)
