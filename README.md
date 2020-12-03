@@ -73,5 +73,8 @@ In addition to the ability to record production, the software also needs the abi
 ## How it works
 ![Production Line Tracker](ProductionTrackerGUI.gif)
 
+##Class Diagram
+![Class Diagram](https://github.com/KB284/Production/blob/master/ProductionTracker.JPG)
+
 ## JavaDoc
 - file:///C:/Users/khuba/OneDrive/FGCU%20projects/OOP/Production/docs/package-summary.html
