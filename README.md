@@ -72,3 +72,6 @@ In addition to the ability to record production, the software also needs the abi
 
 ## How it works
 ![Production Line Tracker](ProductionTrackerGUI.gif)
+
+## JavaDoc
+- file:///C:/Users/khuba/OneDrive/FGCU%20projects/OOP/Production/package-summary.html
