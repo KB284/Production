@@ -76,5 +76,8 @@ In addition to the ability to record production, the software also needs the abi
 ## Class Diagram
 ![Class Diagram](https://github.com/KB284/Production/blob/master/ProductionTracker.JPG)
 
+## Database Diagram
+![Database Diagram](https://github.com/KB284/Production/blob/master/database.PNG)
+
 ## JavaDoc
 - file:///C:/Users/khuba/OneDrive/FGCU%20projects/OOP/Production/docs/package-summary.html
