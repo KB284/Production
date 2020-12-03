@@ -71,4 +71,4 @@ In addition to the ability to record production, the software also needs the abi
     -   Three 5-week sprints, detailed below.
 
 ## How it works
-![Production Line Tab](Prodline.gif)
+![Production Line Tracker](ProductionTrackerGUI.gif)
