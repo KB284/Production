@@ -1,3 +1,7 @@
+## Production Line Tracker GUI
+This project is made to imitate how a production factory records and uses these programs to keep track of products that are made within the facility. This was a class project with everyone working on their own version of the program. I have beginners knowledge on java coding and this is my version of the program with what knowledge I have obtained throughout the class. Due to the unforseen circumstances of the Covid-19 pandemic, this project was done at home through an online COP 3003 class from Florida Gulf Coast University.
+
+## Problem Statement
 **Scenario**
 
 You have been hired to create software for a media player production facility that will keep track of what products are produced.
@@ -70,7 +74,7 @@ In addition to the ability to record production, the software also needs the abi
 -   **Timelines** (a breakdown of the Product Backlog into time-bound smaller, more detailed tasks in Sprint Backlogs)
     -   Three 5-week sprints, detailed below.
 
-## How it works
+## Demonstration
 ![Production Line Tracker](ProductionTrackerGUI.gif)
 
 ## Class Diagram
@@ -79,5 +83,24 @@ In addition to the ability to record production, the software also needs the abi
 ## Database Diagram
 ![Database Diagram](https://github.com/KB284/Production/blob/master/database.PNG)
 
-## JavaDoc
-- file:///C:/Users/khuba/OneDrive/FGCU%20projects/OOP/Production/docs/package-summary.html
+## Documentation
+- JavaDoc
+    - file:///C:/Users/khuba/OneDrive/FGCU%20projects/OOP/Production/docs/package-summary.html
+- Github URL
+    - https://github.com/KB284/Production
+
+## Built with
+- Intellije Ultimate
+- Java
+
+## Contrubuting
+N/A
+
+## License
+This is licensed under the MIT License.
+
+## Author
+Khubaib Farah (KB)
+
+## Key Programming Concepts Utilized
+The main porpose of this project is to learn object oriented design and programming. 
