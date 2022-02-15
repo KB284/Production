@@ -103,4 +103,4 @@ This is licensed under the MIT License.
 Khubaib Farah (KB)
 
 ## Key Programming Concepts Utilized
-The main porpose of this project is to learn object oriented design and programming. 
+The main purpose of this project is to learn object oriented design and programming. 
